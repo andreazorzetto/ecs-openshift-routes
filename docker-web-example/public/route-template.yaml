@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: "${SERVICE_NAME}-public-template"
+objects:
+  - apiVersion: v1
+    kind: Route
+    metadata:
+      name: "${SERVICE_NAME}"
+      namespace: "${NAMESPACE}"
+    spec:
+      port:
+        targetPort: https
+      tls:
+        termination: edge
+      to:
+        kind: Service
+        name: "${SERVICE_NAME}"
+parameters:
+  - description: Service name
+    name: SERVICE_NAME
+    required: true
+  - description: Namespace for the service
+    name: NAMESPACE
+    required: true
