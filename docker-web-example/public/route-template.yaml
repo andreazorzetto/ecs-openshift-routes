@@ -10,7 +10,7 @@ objects:
       namespace: "${NAMESPACE}"
     spec:
       port:
-        targetPort: https
+        targetPort: http
       tls:
         termination: edge
       to:
